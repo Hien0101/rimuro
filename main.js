@@ -321,8 +321,11 @@ function buypopup(product) {
     </div>
     </div>
     `);
-  popup.find(".popup-senninor").click(function () {
-    window.location.href = "https://hien0101.github.io/thanhtoans/";
+  $(".popup-senninor").click(function () {
+    const cartData = JSON.stringify(cartItems);
+    const encoded = encodeURIComponent(cartData);
+    window.location.href =
+      "https://hien0101.github.io/thanhtoans/?cart=" + encoded;
   });
   popup.find(".close-btnner").click(function () {
     popup.remove();
@@ -389,10 +392,10 @@ function showpopup(product) {
 
   let currentValue = 1;
 
-  const increaseBtn = $popup.find("#increase");
-  const decreaseBtn = $popup.find("#decrease");
-  const valueDisplay = $popup.find("#value");
-  const messageDisplay = $popup.find("#message");
+  const increaseBtn = popup.find("#increase");
+  const decreaseBtn = popup.find("#decrease");
+  const valueDisplay = popup.find("#value");
+  const messageDisplay = popup.find("#message");
   increaseBtn.click(function () {
     currentValue++;
     valueDisplay.text(currentValue);
@@ -407,7 +410,7 @@ function showpopup(product) {
       messageDisplay.text("Vui lòng chọn số lượng sản phẩm ");
     }
   });
-  $("body").append($popup);
+  $("body").append(popup);
 }
 displayProducts(productList);
 /* sản phầm trong giỏ hàng */
@@ -468,7 +471,7 @@ function renderCartItems() {
   };
 </script>
     */
-    localStorage.setItem(myData, JSON.stringify(cartItem));
+    /* localStorage.setItem(myData, JSON.stringify(cartItem));
     document.querySelectorAll(".popup-senninor").onclick = () => {
       const win = window.open(
         "https://hien0101.github.io/thanhtoans/",
@@ -479,7 +482,7 @@ function renderCartItems() {
       }, 1000);
     };
     consoloe.log(win);
-
+*/
     const messageDisplay = cartItem.find(".item-message");
     const increaseBtn = cartItem.find(".increase");
     const decreaseBtn = cartItem.find(".decrease");
