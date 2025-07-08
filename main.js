@@ -4,14 +4,7 @@ $(".content-wire-left").click(function () {
 $(".content-cart-left-texts").click(function () {
   location.reload();
 });
-/*
-const contentWireee = document.querySelectorAll(".content-cart-left-texts");
-contentWireee.forEach(function (element) {
-  element.addEventListener("click", function () {
-    location.reload();
-  });
-});
-*/
+
 $(".content-font-left").click(function () {
   $("html,body").animate(
     {
@@ -20,6 +13,7 @@ $(".content-font-left").click(function () {
     "slow"
   );
 });
+let cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
 /*
 const contentText = document.querySelectorAll(".content-font-left");
 contentText.forEach(function (element) {
@@ -63,7 +57,7 @@ window.addEventListener("scroll", function () {
 $(".order-btn").click(function () {
   window.location.href = "https://hien0101.github.io/thanhtoans/";
 });
-let cartItems = [];
+
 const procenterNice = document.getElementById("procenter-nice");
 const productesion = [
   {
@@ -291,6 +285,7 @@ function buypopup(product) {
   } else {
     cartItems.push({ ...product, quantity: 1 });
   }
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
   showPopup();
   const popup = $(`
   <div class="popup-fullner">
@@ -447,42 +442,6 @@ function renderCartItems() {
       `
     );
     console.log(cartItem);
-    /*
-    <!-- Trang https://a.com -->
-<button id="sendData">Gửi dữ liệu sang b.com</button>
-
-<script>
-  const dataToSend = {
-    name: "Hiền cute",
-    message: "Chúc một ngày vui vẻ nha!"
-  };
-
-  // Lưu vào localStorage nếu cần
-  localStorage.setItem("myData", JSON.stringify(dataToSend));
-
-  document.getElementById("sendData").onclick = () => {
-    // Mở trang web khác
-    const win = window.open("https://b.com", "_blank");
-
-    // Gửi message sau 1 chút để đảm bảo trang b.com đã load
-    setTimeout(() => {
-      win.postMessage(dataToSend, "https://b.com");
-    }, 1000);
-  };
-</script>
-    */
-    /* localStorage.setItem(myData, JSON.stringify(cartItem));
-    document.querySelectorAll(".popup-senninor").onclick = () => {
-      const win = window.open(
-        "https://hien0101.github.io/thanhtoans/",
-        "_blank"
-      );
-      setTimeout(() => {
-        win(cartItem, "https://hien0101.github.io/thanhtoans/");
-      }, 1000);
-    };
-    consoloe.log(win);
-*/
     const messageDisplay = cartItem.find(".item-message");
     const increaseBtn = cartItem.find(".increase");
     const decreaseBtn = cartItem.find(".decrease");
@@ -502,6 +461,7 @@ function renderCartItems() {
     });
     trashBtn.click(function () {
       cartItems.splice(idx, 1);
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
       renderCartItems();
     });
     cartListion.append(cartItem);
@@ -810,4 +770,7 @@ $(".saiontime").click(function (e) {
     return;
   }
   alert("gửi thành công ");
+});
+$(document).ready(function () {
+  renderCartItems();
 });
