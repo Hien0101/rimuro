@@ -308,7 +308,7 @@ function buypopup(product) {
 
      </p>
      <div class="popup-sailamogif">
-     <a href="https://hien0101.github.io/thanhtoans/" target="_blank">
+     <a href="https://thotrangcute.github.io/tinhtiencuarsp/"target="_blank">
         <h2 class="popup-senninor"> Tiến Hành Thanh Toán &#10140;</h2>
      </a>
      </div>
@@ -320,7 +320,7 @@ function buypopup(product) {
     const cartData = JSON.stringify(cartItems);
     const encoded = encodeURIComponent(cartData);
     window.location.href =
-      "https://hien0101.github.io/thanhtoans/?cart=" + encoded;
+      "https://thotrangcute.github.io/tinhtiencuarsp/?cart=" + encoded;
   });
   popup.find(".close-btnner").click(function () {
     popup.remove();
