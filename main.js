@@ -55,7 +55,7 @@ window.addEventListener("scroll", function () {
 });
 */
 $(".order-btn").click(function () {
-  window.location.href = "https://hien0101.github.io/thanhtoans/";
+  window.location.href = "https://thotrangcute.github.io/tinhtiencuarsp/";
 });
 
 const procenterNice = document.getElementById("procenter-nice");
